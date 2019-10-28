@@ -1,0 +1,76 @@
+<head>
+	<link 
+	rel="stylesheet" 
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+</head>
+<!-- HTML -->
+<body>
+	<div class="container">
+		<h1>Math Quiz</h1>
+		<hr/>
+		<p>
+			Question: <span id="question"></span>
+		</p>
+		<p>
+			Answer: <input id="answer"></input> <button onclick="checkAnswer()">Enter</button>
+		</p>
+		<p>
+			<span id="feedback"></span>
+		</p>
+	</div>
+
+<!-- CODE -->
+<script>
+
+	// globally accessible variables
+	var trueAnswer = null
+
+	// window.onload is a function variable
+	// same as function run() {}
+	window.onload = function () {
+		// create a brand new question
+		createNewQuestion()
+	}
+
+	function createNewQuestion() {
+		console.log('create new question')
+		clearOldAnswer()
+
+		// then, make a new question
+		var x1 = getRandomNumber()
+		var x2 = getRandomNumber()
+		trueAnswer = x1 + x2
+		var questionTxt = 'What is ' + x1 + ' + ' + x2 + '?'
+		$("#question").html(questionTxt)
+	}
+
+	function clearOldAnswer() {
+		$("#feedback").html('')
+		$("#answer").val('')
+	}
+
+	function getRandomNumber() {
+		return Math.ceil(Math.random() * 10)
+	}
+
+	function checkAnswer() {
+		console.log('check answer')
+		var theirAnswer = $('#answer').val();
+		if(theirAnswer == trueAnswer){
+			$("#feedback").html('Yaaaaay')
+		} else {
+			console.log('booooo on you')
+			$("#feedback").html('Incorrect. Correct answer is ' + trueAnswer)
+		}
+		setTimeout(createNewQuestion, 500)
+	}
+
+
+
+
+</script>
+</body>

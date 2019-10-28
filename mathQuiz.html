@@ -1,0 +1,69 @@
+<head>
+	<link 
+	rel="stylesheet" 
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- HTML -->
+<div class="container">
+	<h1>Quiz</h1>
+	<hr/>
+	<p>Question: 
+		<span id="question"></span>
+	</p>
+	<p>
+		Answer: 
+		<input id="answer"></input> 
+		<button onclick="checkAnswer()" class="btn btn-primary">Enter</button>
+	</p>
+	<p>
+		<span id="feedback" style="color:purple"></span>
+	</p>
+</div>
+
+<!-- CODE -->
+<script>
+
+
+var trueAnswer = null;
+
+window.onload = function() {
+	createQuestion()
+}
+
+function createQuestion() {
+	$('#feedback').html('')
+	$('#answer').val('')
+	var v1 = getRandomInt(1, 10)
+	var v2 = getRandomInt(1, 10)
+	displayQuestion('what is ' + v1 + ' + ' + v2 + '?')
+	trueAnswer = v1 + v2
+}
+
+function getRandomInt(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
+
+function checkAnswer() {
+	var ans = $('#answer').val()
+
+	if(ans == trueAnswer) {
+		$("#feedback").html('Correct')
+	} else {
+		$("#feedback").html('Incorrect. Correct ans is ' + trueAnswer)
+	}
+	setTimeout(createQuestion, 1000)
+}
+
+function displayQuestion(text) {
+	$('#question').html(text)
+}
+
+</script>
+
+</body>

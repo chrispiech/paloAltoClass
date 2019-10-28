@@ -1,0 +1,41 @@
+<head>
+	<link 
+	rel="stylesheet" 
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div class="container">
+		<table class="table table-hover">
+
+				<tbody id="target"></tbody>
+		</table>
+	</div>
+
+<script>
+
+	window.onload = function() {
+		let title = 'Lauras Page'
+		let text = 'the coolest page'
+
+		for(var i = 0; i < 10; i++) {
+			var template = `
+				<tr>
+					<td>${i + 1}</td>
+					<td>wer</td>
+					<td>asdf</td>
+					<td>asdf</td>
+					<td>asfd</td>
+				</tr>
+			`
+
+			$("#target").append(template)
+		}
+	}
+
+</script>
+</body>
